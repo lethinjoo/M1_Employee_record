@@ -283,17 +283,14 @@ if(flag==1)
     e.name[strlen(e.name)-1]='\0';
 
     printf("\n\n\t\tEnter Designation: ");
-    fflush(stdin);
     fgets(e.desgn,10,stdin); //fgets takes an extra \n character as input
     e.desgn[strlen(e.desgn)-1]='\0';
 
     printf("\n\n\t\tEnter Gender: ");
-    fflush(stdin);
     fgets(e.gender,10,stdin); //fgets takes an extra \n character as input
     e.gender[strlen(e.gender)-1]='\0';
 
     printf("\n\n\t\tEnter Branch: ");
-    fflush(stdin);
     fgets(e.branch,50,stdin);
     e.branch[strlen(e.branch)-1]='\0';
 
@@ -301,11 +298,9 @@ if(flag==1)
     scanf("%f",&e.sal);
 
     printf("\n\n\t\tEnter Phone Number: ");
-    fflush(stdin);
     e.phone[strlen(e.phone)-1]='\0';
 
     printf("\n\n\t\tEnter E-mail ID: ");
-    fflush(stdin);
     fgets(e.mail,20,stdin);
     e.mail[strlen(e.mail)-1]='\0';
 
