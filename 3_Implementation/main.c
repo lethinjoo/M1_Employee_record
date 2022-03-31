@@ -197,7 +197,6 @@ while(another=='y'||another=='Y')
 
     printf("\n\n\t\tEnter Phone Number: ");
     fflush(stdin);
-    fgets(e.phone,50,stdin);
     e.phone[strlen(e.phone)-1]='\0';
 
     printf("\n\n\t\tEnter E-mail ID: ");
