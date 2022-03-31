@@ -28,7 +28,7 @@ int main()
 {
  FILE * fp;
  Employee e;
-int option;
+int option,flag;
 char another;
 
 if((fp=fopen("employeeInfo.txt","rb+"))==NULL) 
@@ -46,7 +46,7 @@ printHead();
 printf("\n\t\t\t\tLogin Screen");
 printf("\n\t\t\t Enter Your Credential");
 printf("\n\n\n\t\tUsername: ");
-scanf("%s",username);
+scanf("%s",&username);
 printf("\n\t\tPassword: ");
 int i;
 i=0;
@@ -392,7 +392,7 @@ while((fread(&e,siz,1,fp))==1)
         break;
         }
 }
-int flag;
+int flag=0;
 if(flag==1)
     {
     printf("\n\t\tNAME : %s",e.name);
