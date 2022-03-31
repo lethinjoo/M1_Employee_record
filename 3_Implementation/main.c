@@ -18,7 +18,6 @@ struct emp
     char name[100];
     char desgn[10];
     float sal;
-    char jdate[8];
     char gender[10];
     char branch[50];
     char phone[15];
