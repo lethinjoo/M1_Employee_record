@@ -191,7 +191,6 @@ while(another=='y'||another=='Y')
     e.mail[strlen(e.mail)-1]='\0';
     fwrite(&e,sizeof(e),1,fp);
     printf("\n\n\t\tWant to enter another employee info (Y/N)\t");
-    another=getchar();
 }
 }
 
@@ -214,10 +213,7 @@ if((ft=fopen("temp.txt","wb+"))==NULL)
 printf("\n\n\tEnter ID number of Employee to Delete the Record");
 printf("\n\n\t\t\tID No. : ");
 scanf("%d",&tempid);
-
 rewind(fp);
-
-
 while((fread(&e,siz,1,fp))==1)
 {
     if(e.id==tempid)
