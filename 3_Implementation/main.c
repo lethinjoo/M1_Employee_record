@@ -279,7 +279,6 @@ if(flag==1)
     scanf("%d",&e.id);
 
     printf("\n\n\t\tEnter Full Name of Employee: ");
-    fflush(stdin);
     fgets(e.name,100,stdin); //fgets takes an extra \n character as input
     e.name[strlen(e.name)-1]='\0';
 
@@ -385,8 +384,6 @@ if(flag==1)
 else printf("\n\n\t\t***ERROR RECORD NOT FOUND***");
 
 printf("\n\n\t\tWant to enter another search (Y/N)");
-fflush(stdin);
-another=getchar();
 }
 }
 
