@@ -45,7 +45,7 @@ printHead();
 printf("\n\t\t\t\tLogin Screen");
 printf("\n\t\t\t Enter Your Credential");
 printf("\n\n\n\t\tUsername: ");
-scanf("%s",&username);
+gets(username);
 printf("\n\t\tPassword: ");
 int i;
 i=0;
