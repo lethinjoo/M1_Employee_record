@@ -2,7 +2,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<math.h>
-
+#include<stdict.h>
 #define Employee struct emp
 void add(FILE * fp); 
 FILE * del(FILE * fp);
@@ -392,7 +392,7 @@ while((fread(&e,siz,1,fp))==1)
         break;
         }
 }
-
+int flag;
 if(flag==1)
     {
     printf("\n\t\tNAME : %s",e.name);
