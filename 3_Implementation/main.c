@@ -2,7 +2,6 @@
 #include<string.h>
 #include<stdlib.h>
 #include<math.h>
-#include<stdict.h>
 #define Employee struct emp
 void add(FILE * fp); 
 FILE * del(FILE * fp);
