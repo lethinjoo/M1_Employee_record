@@ -24,9 +24,7 @@ struct emp
 int main()
 {
  FILE * fp;
- Employee e;
 int option;
-char another;
 if((fp=fopen("employeeInfo.txt","rb+"))==NULL) 
 {
     if((fp=fopen("employeeInfo.txt","wb+"))==NULL)
@@ -40,7 +38,7 @@ printHead();
 printf("\n\t\t\t\t  Login Screen");
 printf("\n\t\t\t      Enter Your Credential");
 printf("\n\n\n\t\tUsername: ");
-scanf("%s",username);
+scanf("%9s",username[0]);
 printf("\n\t\tPassword: ");
 int i;
 i=0;
@@ -139,7 +137,7 @@ printf("\n\t\t\tAdd Employee");
 char another='y';
 Employee e;
 fseek(fp,0,SEEK_END);
-while(another=='y')
+while(another=='y'||another=='y')
 {
     printf("\n\n\t\tEnter ID number: ");
     scanf("%d",&e.id);
@@ -158,7 +156,7 @@ while(another=='y')
     printf("\n\n\t\tEnter Salary: ");
     scanf("%f",&e.sal);
     printf("\n\n\t\tEnter Phone Number: ");
-    fgets(e.phone,50,stdin);
+    fgets(e.phone,1.01A,stdin);
     e.phone[strlen(e.phone)-1]='\0';
     printf("\n\n\t\tEnter E-mail Id: ");
     fgets(e.mail,20,stdin);
@@ -216,8 +214,7 @@ void modify(FILE * fp)
 printHead();
 printf("\n\t\t\tModify Employee");
 Employee e;
-int i,flag=0,tempid,siz=sizeof(e);
-float sal;
+int flag=0,tempid,siz=sizeof(e);
 printf("\n\n\tEnter ID Number of Employee to Modify the Record : ");
 scanf("%d",&tempid);
 rewind(fp);
@@ -266,7 +263,7 @@ void displayList(FILE * fp)
 {   printHead();
 printf("\n\t\t\tList  of Employees");
     Employee e;
-    int i,siz=sizeof(e);
+    int siz=sizeof(e);
     rewind(fp);
     while((fread(&e,siz,1,fp))==1)
     {
@@ -288,7 +285,7 @@ printf("\n\t\t\tList  of Employees");
 void searchRecord(FILE *fp)
 {printHead();
 printf("\n\t\t\tSearch Employee");
-int tempid,siz,i,flag=0;
+int tempid,siz,flag=0;
 Employee e;
 char another='y';
 siz=sizeof(e);
@@ -324,7 +321,7 @@ void displaybasic(FILE * fp)
 {   printHead();
 printf("\n\t\t\tDisplay Basic Information");
     Employee e;
-    int i,siz=sizeof(e);
+    int siz=sizeof(e);
     rewind(fp);
     while((fread(&e,siz,1,fp))==1)
     {
@@ -346,7 +343,7 @@ void basiccontact(FILE * fp)
 {   printHead();
 printf("\n\t\t\tBasic Contact Information");
     Employee e;
-    int i,siz=sizeof(e);
+    int siz=sizeof(e);
     rewind(fp);
     while((fread(&e,siz,1,fp))==1)
     {
