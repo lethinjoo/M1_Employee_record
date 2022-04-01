@@ -12,7 +12,7 @@ void printChar(char ch,int n);
 void printHead();
 struct emp
 {
-    int id,password;
+    int id;
     char name[100];
     char desgn[10];
     float sal;
