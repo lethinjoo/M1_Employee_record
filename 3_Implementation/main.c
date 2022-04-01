@@ -12,7 +12,7 @@ void printChar(char ch,int n);
 void printHead();
 struct emp
 {
-    int id;
+    int id,password;
     char name[100];
     char desgn[10];
     float sal;
@@ -25,7 +25,7 @@ int main()
 {
  FILE * fp;
  Employee e;
-int option,flag;
+int option;
 char another;
 if((fp=fopen("employeeInfo.txt","rb+"))==NULL) 
 {
@@ -180,14 +180,12 @@ printf("\n\t\t\tDelete Employee");
 Employee e;
 int flag=0,tempid,siz=sizeof(e);
 FILE *ft;
-
 if((ft=fopen("temp.txt","wb+"))==NULL)
 {
     printf("\n\n\t\t\t\\t*** ERROR ***\n\t\t");
     system("pause");
      return fp;
 }
-
 printf("\n\n\tEnter ID number of Employee to Delete the Record");
 printf("\n\n\t\t\tID No. : ");
 scanf("%d",&tempid);
@@ -232,7 +230,8 @@ rewind(fp);
 while((fread(&e,siz,1,fp))==1)
 {
     if(e.id==tempid)
-        {flag=1;
+        {
+	    flag=1;
         break;
         }
 }
