@@ -16,7 +16,6 @@ struct emp
     char name[100];
     char desgn[10];
     float sal;
-    char jdate[8];
     char gender[10];
     char branch[50];
     char phone[15];
@@ -148,31 +147,24 @@ while(another=='y'||another=='Y')
     fgets(e.name,100,stdin); //fgets takes an extra \n character as input
     e.name[strlen(e.name)-1]='\0';
     printf("\n\n\t\tEnter Designation: ");
-    fflush(stdin);
     fgets(e.desgn,10,stdin); //fgets takes an extra \n character as input
     e.desgn[strlen(e.desgn)-1]='\0';
     printf("\n\n\t\tEnter Gender: ");
-    fflush(stdin);
     fgets(e.gender,10,stdin); //fgets takes an extra \n character as input
     e.gender[strlen(e.gender)-1]='\0';
     printf("\n\n\t\tEnter Branch: ");
-    fflush(stdin);
     fgets(e.branch,50,stdin);
     e.branch[strlen(e.branch)-1]='\0';
     printf("\n\n\t\tEnter Salary: ");
     scanf("%f",&e.sal);
     printf("\n\n\t\tEnter Phone Number: ");
-    fflush(stdin);
     fgets(e.phone,50,stdin);
     e.phone[strlen(e.phone)-1]='\0';
     printf("\n\n\t\tEnter E-mail Id: ");
-    fflush(stdin);
     fgets(e.mail,20,stdin);
     e.mail[strlen(e.mail)-1]='\0';
     fwrite(&e,sizeof(e),1,fp);
     printf("\n\n\t\tWant to enter another employee info (Y/N)\t");
-    fflush(stdin);
-    another=getchar();
 }
 }
 //DELETING A RECORD FROM LIST
@@ -302,7 +294,7 @@ printf("\n\t\t\tList  of Employees");
 void searchRecord(FILE *fp)
 {printHead();
 printf("\n\t\t\tSearch Employee");
-int tempid,flag,siz,i;
+int tempid,siz,i;
 Employee e;
 char another='y';
 siz=sizeof(e);
@@ -314,12 +306,12 @@ rewind(fp);
 while((fread(&e,siz,1,fp))==1)
 {
     if(e.id==tempid)
-        {flag=1;
+        {
         break;
         }
 }
 int flag=0;
-if(flag==1)
+if(flag==0)
     {
     printf("\n\t\tNAME : %s",e.name);
         printf("\n\n\t\tID : %d",e.id);
