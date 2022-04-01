@@ -139,7 +139,7 @@ printf("\n\t\t\tAdd Employee");
 char another='y';
 Employee e;
 fseek(fp,0,SEEK_END);
-while(another=='y'||another=='Y')
+while(another=='y')
 {
     printf("\n\n\t\tEnter ID number: ");
     scanf("%d",&e.id);
@@ -304,7 +304,7 @@ while((fread(&e,siz,1,fp))==1)
         break;
         }
 }
-int flag=1;
+int flag;
 if(flag==1)
     {
     printf("\n\t\tNAME : %s",e.name);
@@ -318,7 +318,6 @@ if(flag==1)
 }
 else printf("\n\n\t\t*** ERROR RECORD NOT FOUND ***");
 printf("\n\n\t\tWant to enter another search (Y/N)");
-another=getchar();
 }
 }
 //DISPLAY BASIC INFO LIST
