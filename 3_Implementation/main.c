@@ -25,7 +25,7 @@ int main()
 {
  FILE * fp;
  Employee e;
-int option,password=1;
+int option;
 char another;
 if((fp=fopen("employeeInfo.txt","rb+"))==NULL) 
 {
@@ -44,7 +44,7 @@ printf("\n\t\t\t Enter Your Credential");
 printf("\n\n\n\t\tUsername: ");
 gets(username);
 printf("\n\t\tPassword: ");
-int i;
+int i,password=1;
 i=0;
 	do
 	{
