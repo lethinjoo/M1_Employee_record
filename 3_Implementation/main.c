@@ -16,6 +16,7 @@ struct emp
     char name[100];
     char desgn[10];
     float sal;
+    char jdate[8];
     char gender[10];
     char branch[50];
     char phone[15];
@@ -37,18 +38,16 @@ if((fp=fopen("employeeInfo.txt","rb+"))==NULL)
 }
 char username[10],password[10];
 printHead();
-printHead();
-welcome();
-printf("\n\t\t\t\tLogin Screen");
-printf("\n\t\t\t Enter Your Credential");
+printf("\n\t\t\t\t  Login Screen");
+printf("\n\t\t\t      Enter Your Credential");
 printf("\n\n\n\t\tUsername: ");
-gets(username);
+scanf("%s",username);
 printf("\n\t\tPassword: ");
-int i,password=1;
+int i;
 i=0;
 	do
 	{
-		password[i];
+		password[i] = getch();
 		if(password[i] == 13 )
 		{
 			break;
@@ -65,7 +64,7 @@ i=0;
 		}
 	}while(password[i]!=13);
 	password[i] = '\0';
-if(((strcasecmp(username,"employee"))==0)&&((strcasecmp(password,"name")==0)))
+if(((strcasecmp(username,"admin"))==0)&&((strcasecmp(password,"pass")==0)))
 {
     while(1)
 {
@@ -102,7 +101,9 @@ if(((strcasecmp(username,"employee"))==0)&&((strcasecmp(password,"name")==0)))
                 break;
         default: printf("\n\t\tYou Pressed wrong key");
                   printf("\n\t\tProgram terminated");
+                  getch();
                   exit(0);
+
     }
 }
 }
@@ -110,12 +111,6 @@ else {
     printf("\n\t\tLogin Failed");
 }
 return 1;
-}
-//Welcome Screen
-void welcome()
-{
-    printf("\n\n\n\n\n\t\t***WELCOME TO OUR EMPLOYEE MANAGEMENT SYSTEM***\n\n\n\n\n\n\n\t");
-    system("pause");
 }
 //printing character ch at n times
 void printChar(char ch,int n)
@@ -132,7 +127,7 @@ printf("\t");
 printChar('=',65);
 printf("\n\t");
 printChar('=',16);
-printf("[EMPLOYEE MANAGEMENT SYSTEM]");
+printf("[EMPLOYEE RECORD SYSTEM]");
 printChar('=',16);
 printf("\n\t");
 printChar('=',65);
@@ -150,26 +145,35 @@ while(another=='y'||another=='Y')
     printf("\n\n\t\tEnter ID number: ");
     scanf("%d",&e.id);
     printf("\n\n\t\tEnter Full Name of Employee: ");
+    fflush(stdin);
     fgets(e.name,100,stdin); //fgets takes an extra \n character as input
     e.name[strlen(e.name)-1]='\0';
     printf("\n\n\t\tEnter Designation: ");
+    fflush(stdin);
     fgets(e.desgn,10,stdin); //fgets takes an extra \n character as input
     e.desgn[strlen(e.desgn)-1]='\0';
     printf("\n\n\t\tEnter Gender: ");
+    fflush(stdin);
     fgets(e.gender,10,stdin); //fgets takes an extra \n character as input
     e.gender[strlen(e.gender)-1]='\0';
     printf("\n\n\t\tEnter Branch: ");
+    fflush(stdin);
     fgets(e.branch,50,stdin);
     e.branch[strlen(e.branch)-1]='\0';
-    printf("\n\n\t\tEnter Basic Salary: ");
+    printf("\n\n\t\tEnter Salary: ");
     scanf("%f",&e.sal);
     printf("\n\n\t\tEnter Phone Number: ");
+    fflush(stdin);
+    fgets(e.phone,50,stdin);
     e.phone[strlen(e.phone)-1]='\0';
-    printf("\n\n\t\tEnter E-mail ID: ");
+    printf("\n\n\t\tEnter E-mail Id: ");
+    fflush(stdin);
     fgets(e.mail,20,stdin);
     e.mail[strlen(e.mail)-1]='\0';
     fwrite(&e,sizeof(e),1,fp);
     printf("\n\n\t\tWant to enter another employee info (Y/N)\t");
+    fflush(stdin);
+    another=getchar();
 }
 }
 //DELETING A RECORD FROM LIST
@@ -180,14 +184,12 @@ printf("\n\t\t\tDelete Employee");
 Employee e;
 int flag=0,tempid,siz=sizeof(e);
 FILE *ft;
-
 if((ft=fopen("temp.txt","wb+"))==NULL)
 {
     printf("\n\n\t\t\t\\t*** ERROR ***\n\t\t");
     system("pause");
      return fp;
 }
-
 printf("\n\n\tEnter ID number of Employee to Delete the Record");
 printf("\n\n\t\t\tID No. : ");
 scanf("%d",&tempid);
@@ -200,7 +202,6 @@ while((fread(&e,siz,1,fp))==1)
     printf("\n\n\t\t%s\n\n\t\t%s\n\n\t\t%d\n\t",e.name,e.branch,e.id);
     continue;
     }
-
     fwrite(&e,siz,1,ft);
 }
 fclose(fp);
@@ -212,7 +213,7 @@ if((fp=fopen("employeeInfo.txt","rb+"))==NULL)
     printf("ERROR");
     return  NULL;
 }
-if(flag==0) printf("\n\n\t\t***ERROR RECORD NOT FOUND*** \n\t");
+if(flag==0) printf("\n\n\t\t*** ERROR RECORD NOT FOUND *** \n\t");
 printChar('-',65);
 printf("\n\t");
 system("pause");
@@ -244,27 +245,34 @@ if(flag==1)
      printf("\n\n\t\tEnter ID number: ");
     scanf("%d",&e.id);
     printf("\n\n\t\tEnter Full Name of Employee: ");
+    fflush(stdin);
     fgets(e.name,100,stdin); //fgets takes an extra \n character as input
     e.name[strlen(e.name)-1]='\0';
     printf("\n\n\t\tEnter Designation: ");
+    fflush(stdin);
     fgets(e.desgn,10,stdin); //fgets takes an extra \n character as input
     e.desgn[strlen(e.desgn)-1]='\0';
     printf("\n\n\t\tEnter Gender: ");
+    fflush(stdin);
     fgets(e.gender,10,stdin); //fgets takes an extra \n character as input
     e.gender[strlen(e.gender)-1]='\0';
     printf("\n\n\t\tEnter Branch: ");
+    fflush(stdin);
     fgets(e.branch,50,stdin);
     e.branch[strlen(e.branch)-1]='\0';
-    printf("\n\n\t\tEnter Basic Salary: ");
+    printf("\n\n\t\tEnter Salary: ");
     scanf("%f",&e.sal);
-    printf("\n\n\t\tEnter Phone Number: ");
+    printf("\n\n\t\tEnter Phone: ");
+    fflush(stdin);
+    fgets(e.phone,50,stdin);
     e.phone[strlen(e.phone)-1]='\0';
-    printf("\n\n\t\tEnter E-mail ID: ");
+    printf("\n\n\t\tEnter E-mail: ");
+    fflush(stdin);
     fgets(e.mail,20,stdin);
     e.mail[strlen(e.mail)-1]='\0';
     fwrite(&e,sizeof(e),1,fp);
 }
-else printf("\n\n\t***ERROR*** RECORD NOT FOUND");
+else printf("\n\n\t*** ERROR !!! RECORD NOT FOUND");
 printf("\n\n\t");
 system("pause");
 }
@@ -293,8 +301,7 @@ printf("\n\t\t\tList  of Employees");
 }
 //SEARCH EMPLOYEE
 void searchRecord(FILE *fp)
-{
-printHead();
+{printHead();
 printf("\n\t\t\tSearch Employee");
 int tempid,flag,siz,i;
 Employee e;
@@ -308,12 +315,10 @@ rewind(fp);
 while((fread(&e,siz,1,fp))==1)
 {
     if(e.id==tempid)
-        {
-            flag=1;
-            break;
+        {flag=1;
+        break;
         }
 }
-int flag=1;
 if(flag==1)
     {
     printf("\n\t\tNAME : %s",e.name);
@@ -325,8 +330,10 @@ if(flag==1)
         printf("\n\n\t\tE-MAIL : %s",e.mail);
         printChar('=',65);
 }
-else printf("\n\n\t\t***ERROR RECORD NOT FOUND***");
+else printf("\n\n\t\t*** ERROR RECORD NOT FOUND ***");
 printf("\n\n\t\tWant to enter another search (Y/N)");
+fflush(stdin);
+another=getchar();
 }
 }
 //DISPLAY BASIC INFO LIST
