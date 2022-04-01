@@ -38,6 +38,7 @@ if((fp=fopen("employeeInfo.txt","rb+"))==NULL)
 char username[10],password[10];
 printHead();
 printHead();
+welcome();
 printf("\n\t\t\t\tLogin Screen");
 printf("\n\t\t\t Enter Your Credential");
 printf("\n\n\n\t\tUsername: ");
