@@ -293,7 +293,8 @@ printf("\n\t\t\tList  of Employees");
 }
 //SEARCH EMPLOYEE
 void searchRecord(FILE *fp)
-{printHead();
+{
+printHead();
 printf("\n\t\t\tSearch Employee");
 int tempid,flag,siz,i;
 Employee e;
@@ -312,6 +313,7 @@ while((fread(&e,siz,1,fp))==1)
             break;
         }
 }
+int flag==0;
 if(flag==1)
     {
     printf("\n\t\tNAME : %s",e.name);
