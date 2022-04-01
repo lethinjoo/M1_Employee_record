@@ -25,7 +25,7 @@ int main()
 {
  FILE * fp;
  Employee e;
-int option,password;
+int option,password=1;
 char another;
 if((fp=fopen("employeeInfo.txt","rb+"))==NULL) 
 {
