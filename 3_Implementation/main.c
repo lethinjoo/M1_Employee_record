@@ -288,11 +288,11 @@ printf("\n\t\t\tList  of Employees");
 void searchRecord(FILE *fp)
 {printHead();
 printf("\n\t\t\tSearch Employee");
-int tempid,siz,i;
+int tempid,siz,i,flag=0;
 Employee e;
 char another='y';
 siz=sizeof(e);
-while(another=='y'||another=='Y')
+while(another=='y')
 {
 printf("\n\n\tEnter ID Number of Employee to search the record : ");
 scanf("%d",&tempid);
@@ -304,7 +304,6 @@ while((fread(&e,siz,1,fp))==1)
         break;
         }
 }
-int flag;
 if(flag==1)
     {
     printf("\n\t\tNAME : %s",e.name);
