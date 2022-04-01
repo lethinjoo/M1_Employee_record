@@ -65,7 +65,7 @@ i=0;
 		}
 	}while(password[i]!=13);
 	password[i] = '\0';
-if(((strcasecmp(username,"M1_employee"))==0)&&((strcasecmp(password,"name")==0)))
+if(((strcasecmp(username,"employee"))==0)&&((strcasecmp(password,"name")==0)))
 {
     while(1)
 {
@@ -180,12 +180,14 @@ printf("\n\t\t\tDelete Employee");
 Employee e;
 int flag=0,tempid,siz=sizeof(e);
 FILE *ft;
+
 if((ft=fopen("temp.txt","wb+"))==NULL)
 {
     printf("\n\n\t\t\t\\t*** ERROR ***\n\t\t");
     system("pause");
      return fp;
 }
+
 printf("\n\n\tEnter ID number of Employee to Delete the Record");
 printf("\n\n\t\t\tID No. : ");
 scanf("%d",&tempid);
@@ -230,8 +232,7 @@ rewind(fp);
 while((fread(&e,siz,1,fp))==1)
 {
     if(e.id==tempid)
-        {
-	    flag=1;
+        {flag=1;
         break;
         }
 }
@@ -306,11 +307,11 @@ rewind(fp);
 while((fread(&e,siz,1,fp))==1)
 {
     if(e.id==tempid)
-        {flag=1;
-        break;
+        {
+            flag=1;
+            break;
         }
 }
-int flag=0;
 if(flag==1)
     {
     printf("\n\t\tNAME : %s",e.name);
