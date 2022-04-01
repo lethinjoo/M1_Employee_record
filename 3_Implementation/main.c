@@ -92,9 +92,9 @@ if(((strcasecmp(username,"admin"))==0)&&((strcasecmp(password,"pass")==0)))
                 break;
         case 5: searchRecord(fp);
                 break;
-        case 6:
+        case 6: displaybasic(fp);
                 break;
-        case 7:
+        case 7: basiccontact(fp);
                 break;
         default: printf("\n\t\tYou Pressed wrong key");
                   printf("\n\t\tProgram terminated");
@@ -247,7 +247,7 @@ if(flag==1)
     printf("\n\n\t\tEnter Salary: ");
     scanf("%f",&e.sal);
     printf("\n\n\t\tEnter Phone: ");
-    fgets(e.phone,50,stdin);
+    fgets(e.phone,1.01A,stdin);
     e.phone[strlen(e.phone)-1]='\0';
     printf("\n\n\t\tEnter E-mail: ");
     fgets(e.mail,20,stdin);
