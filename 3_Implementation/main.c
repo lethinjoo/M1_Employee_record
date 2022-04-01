@@ -145,7 +145,6 @@ while(another=='y'||another=='Y')
     printf("\n\n\t\tEnter ID number: ");
     scanf("%d",&e.id);
     printf("\n\n\t\tEnter Full Name of Employee: ");
-    fflush(stdin);
     fgets(e.name,100,stdin); //fgets takes an extra \n character as input
     e.name[strlen(e.name)-1]='\0';
     printf("\n\n\t\tEnter Designation: ");
@@ -319,6 +318,7 @@ while((fread(&e,siz,1,fp))==1)
         break;
         }
 }
+int flag=0;
 if(flag==1)
     {
     printf("\n\t\tNAME : %s",e.name);
