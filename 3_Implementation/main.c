@@ -313,7 +313,7 @@ while((fread(&e,siz,1,fp))==1)
             break;
         }
 }
-int flag==0;
+int flag=1;
 if(flag==1)
     {
     printf("\n\t\tNAME : %s",e.name);
