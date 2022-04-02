@@ -11,7 +11,7 @@ A Employee’s RECORD System (ERS) is a software built to handle the primary hou
 - Search Employee.
 
 ## State of art/Research:
-There are many projects for Employee Management System, this is also one of them to perform on basic details of employee .It is poratable,Secure and compatable,user friendly.
+There are many projects for Employee Record System, this is also one of them to perform on basic details of employee .It is poratable,Secure and compatable,user friendly.
 
 ## 4-W's and 1-H:
 
@@ -57,8 +57,6 @@ By entering the details you want to know.
 |HLR_3|Modify Employ|Implemented|
 |HLR_4|Display Employ|Implemented|
 |HLR_5|Search Employ|Implemented|
-|HLR_6|Display Employ Info|Implemented|
-|HLR_7|Display Employ Contact Info|Implemented|
 
 ## Low Level Requirements:
 |ID|Description|Status|
