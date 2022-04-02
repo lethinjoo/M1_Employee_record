@@ -16,6 +16,7 @@ struct emp
     char name[100];
     char desgn[10];
     float sal;
+    char jdate[8];
     char gender[10];
     char branch[50];
     char phone[15];
@@ -24,7 +25,9 @@ struct emp
 int main()
 {
  FILE * fp;
+ Employee e;
 int option;
+char another;
 if((fp=fopen("employeeInfo.txt","rb+"))==NULL) 
 {
     if((fp=fopen("employeeInfo.txt","wb+"))==NULL)
@@ -38,13 +41,13 @@ printHead();
 printf("\n\t\t\t\t  Login Screen");
 printf("\n\t\t\t      Enter Your Credential");
 printf("\n\n\n\t\tUsername: ");
-scanf("%9s",username[0]);
+scanf("%s",username);
 printf("\n\t\tPassword: ");
 int i;
 i=0;
 	do
 	{
-		password[i] = getch();
+		password[i] = getchar();
 		if(password[i] == 13 )
 		{
 			break;
@@ -92,13 +95,13 @@ if(((strcasecmp(username,"admin"))==0)&&((strcasecmp(password,"pass")==0)))
                 break;
         case 5: searchRecord(fp);
                 break;
-        case 6: displaybasic(fp);
+        case 6:
                 break;
-        case 7: basiccontact(fp);
+        case 7:
                 break;
         default: printf("\n\t\tYou Pressed wrong key");
                   printf("\n\t\tProgram terminated");
-                  getch();
+                  getchar();
                   exit(0);
 
     }
@@ -137,32 +140,40 @@ printf("\n\t\t\tAdd Employee");
 char another='y';
 Employee e;
 fseek(fp,0,SEEK_END);
-while(another=='y'||another=='y')
+while(another=='y'||another=='Y')
 {
     printf("\n\n\t\tEnter ID number: ");
     scanf("%d",&e.id);
     printf("\n\n\t\tEnter Full Name of Employee: ");
+    fflush(stdin);
     fgets(e.name,100,stdin); //fgets takes an extra \n character as input
     e.name[strlen(e.name)-1]='\0';
     printf("\n\n\t\tEnter Designation: ");
+    fflush(stdin);
     fgets(e.desgn,10,stdin); //fgets takes an extra \n character as input
     e.desgn[strlen(e.desgn)-1]='\0';
     printf("\n\n\t\tEnter Gender: ");
+    fflush(stdin);
     fgets(e.gender,10,stdin); //fgets takes an extra \n character as input
     e.gender[strlen(e.gender)-1]='\0';
     printf("\n\n\t\tEnter Branch: ");
+    fflush(stdin);
     fgets(e.branch,50,stdin);
     e.branch[strlen(e.branch)-1]='\0';
     printf("\n\n\t\tEnter Salary: ");
     scanf("%f",&e.sal);
     printf("\n\n\t\tEnter Phone Number: ");
-    fgets(e.phone,1.01A,stdin);
+    fflush(stdin);
+    fgets(e.phone,50,stdin);
     e.phone[strlen(e.phone)-1]='\0';
     printf("\n\n\t\tEnter E-mail Id: ");
+    fflush(stdin);
     fgets(e.mail,20,stdin);
     e.mail[strlen(e.mail)-1]='\0';
     fwrite(&e,sizeof(e),1,fp);
     printf("\n\n\t\tWant to enter another employee info (Y/N)\t");
+    fflush(stdin);
+    another=getchar();
 }
 }
 //DELETING A RECORD FROM LIST
@@ -214,14 +225,15 @@ void modify(FILE * fp)
 printHead();
 printf("\n\t\t\tModify Employee");
 Employee e;
-int flag=0,tempid,siz=sizeof(e);
+int i,flag=0,tempid,siz=sizeof(e);
+float sal;
 printf("\n\n\tEnter ID Number of Employee to Modify the Record : ");
 scanf("%d",&tempid);
 rewind(fp);
 while((fread(&e,siz,1,fp))==1)
 {
     if(e.id==tempid)
-        {flag=1;
+        {
         break;
         }
 }
@@ -247,7 +259,7 @@ if(flag==1)
     printf("\n\n\t\tEnter Salary: ");
     scanf("%f",&e.sal);
     printf("\n\n\t\tEnter Phone: ");
-    fgets(e.phone,1.01A,stdin);
+    fgets(e.phone,50,stdin);
     e.phone[strlen(e.phone)-1]='\0';
     printf("\n\n\t\tEnter E-mail: ");
     fgets(e.mail,20,stdin);
@@ -263,7 +275,7 @@ void displayList(FILE * fp)
 {   printHead();
 printf("\n\t\t\tList  of Employees");
     Employee e;
-    int siz=sizeof(e);
+    int i,siz=sizeof(e);
     rewind(fp);
     while((fread(&e,siz,1,fp))==1)
     {
@@ -285,11 +297,11 @@ printf("\n\t\t\tList  of Employees");
 void searchRecord(FILE *fp)
 {printHead();
 printf("\n\t\t\tSearch Employee");
-int tempid,siz,flag=0;
+int tempid,flag,siz,i;
 Employee e;
 char another='y';
 siz=sizeof(e);
-while(another=='y')
+while(another=='y'||another=='Y')
 {
 printf("\n\n\tEnter ID Number of Employee to search the record : ");
 scanf("%d",&tempid);
@@ -301,6 +313,7 @@ while((fread(&e,siz,1,fp))==1)
         break;
         }
 }
+int flag=1;
 if(flag==1)
     {
     printf("\n\t\tNAME : %s",e.name);
@@ -314,6 +327,7 @@ if(flag==1)
 }
 else printf("\n\n\t\t*** ERROR RECORD NOT FOUND ***");
 printf("\n\n\t\tWant to enter another search (Y/N)");
+fflush(stdin);
 }
 }
 //DISPLAY BASIC INFO LIST
@@ -321,7 +335,7 @@ void displaybasic(FILE * fp)
 {   printHead();
 printf("\n\t\t\tDisplay Basic Information");
     Employee e;
-    int siz=sizeof(e);
+    int i,siz=sizeof(e);
     rewind(fp);
     while((fread(&e,siz,1,fp))==1)
     {
@@ -343,7 +357,7 @@ void basiccontact(FILE * fp)
 {   printHead();
 printf("\n\t\t\tBasic Contact Information");
     Employee e;
-    int siz=sizeof(e);
+    int i,siz=sizeof(e);
     rewind(fp);
     while((fread(&e,siz,1,fp))==1)
     {
