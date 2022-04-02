@@ -47,7 +47,7 @@ int i;
 i=0;
 	do
 	{
-		password[i] = getchar();
+		password[i] = getch();
 		if(password[i] == 13 )
 		{
 			break;
@@ -101,7 +101,7 @@ if(((strcasecmp(username,"admin"))==0)&&((strcasecmp(password,"pass")==0)))
                 break;
         default: printf("\n\t\tYou Pressed wrong key");
                   printf("\n\t\tProgram terminated");
-                  getchar();
+                  getch();
                   exit(0);
 
     }
