@@ -13,6 +13,12 @@ A Employee’s RECORD System (ERS) is a software built to handle the primary hou
 ## State of art/Research
 There are many projects for Employee Record System, this is also one of them to perform on basic details of employee .It is poratable,Secure and compatable,user friendly.
 
+## Behavioral Diagram
+![Behavioral Diagram](https://user-images.githubusercontent.com/102732132/161423594-e7cc1c57-f495-42ad-9627-12d1a80ae1cd.png)
+
+## Strutural Diagram
+![Structural Diagram](https://user-images.githubusercontent.com/102732132/161423636-3c3beaf3-b5ae-4836-9ab0-6b88d348d7c3.png)
+
 ## 4-W's and 1-H:
 
 ### Why
