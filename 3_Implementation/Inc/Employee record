@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<math.h>
+#define Employee struct emp
+void add(FILE * fp); 
+FILE * del(FILE * fp);
+void modify(FILE * fp);
+void displayList(FILE * fp);
+void searchRecord(FILE *fp);
+void printChar(char ch,int n);
+void printHead();
