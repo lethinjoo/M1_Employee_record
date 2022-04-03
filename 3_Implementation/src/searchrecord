@@ -1,0 +1,35 @@
+void searchRecord(FILE *fp)
+{printHead();
+printf("\n\t\t\tSearch Employee");
+int tempid,flag,siz;
+Employee e;
+char another='y';
+siz=sizeof(e);
+while(another=='y'||another=='Y')
+{
+printf("\n\n\tEnter ID Number of Employee to search the record : ");
+scanf("%d",&tempid);
+rewind(fp);
+while((fread(&e,siz,1,fp))==1)
+{
+    if(e.id==tempid)
+        {
+        break;
+        }
+}
+int flag=1;
+if(flag==1)
+    {
+    printf("\n\t\tNAME : %s",e.name);
+        printf("\n\n\t\tID : %d",e.id);
+        printf("\n\n\t\tDESIGNATION : %s",e.desgn);
+        printf("\n\n\t\tBRANCH : %s",e.branch);
+        printf("\n\n\t\tSALARY: %.2f",e.sal);
+        printf("\n\n\t\tPHONE : %s",e.phone);
+        printf("\n\n\t\tE-MAIL : %s",e.mail);
+        printChar('=',65);
+}
+else printf("\n\n\t\t*** ERROR RECORD NOT FOUND ***");
+printf("\n\n\t\tWant to enter another search (Y/N)");
+}
+}
