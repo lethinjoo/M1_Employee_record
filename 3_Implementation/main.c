@@ -297,7 +297,7 @@ printf("\n\t\t\tList  of Employees");
 void searchRecord(FILE *fp)
 {printHead();
 printf("\n\t\t\tSearch Employee");
-int tempid,flag,siz,i;
+int tempid,flag,siz;
 Employee e;
 char another='y';
 siz=sizeof(e);
@@ -327,7 +327,6 @@ if(flag==1)
 }
 else printf("\n\n\t\t*** ERROR RECORD NOT FOUND ***");
 printf("\n\n\t\tWant to enter another search (Y/N)");
-fflush(stdin);
 }
 }
 //DISPLAY BASIC INFO LIST
@@ -335,7 +334,7 @@ void displaybasic(FILE * fp)
 {   printHead();
 printf("\n\t\t\tDisplay Basic Information");
     Employee e;
-    int i,siz=sizeof(e);
+    int siz=sizeof(e);
     rewind(fp);
     while((fread(&e,siz,1,fp))==1)
     {
@@ -357,7 +356,7 @@ void basiccontact(FILE * fp)
 {   printHead();
 printf("\n\t\t\tBasic Contact Information");
     Employee e;
-    int i,siz=sizeof(e);
+    int siz=sizeof(e);
     rewind(fp);
     while((fread(&e,siz,1,fp))==1)
     {
