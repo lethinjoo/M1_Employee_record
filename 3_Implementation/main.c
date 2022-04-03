@@ -16,6 +16,7 @@ struct emp
     char name[100];
     char desgn[10];
     float sal;
+    char jdate[8];
     char gender[10];
     char branch[50];
     char phone[15];
@@ -44,25 +45,25 @@ scanf("%s",username);
 printf("\n\t\tPassword: ");
 int i;
 i=0;
-	do
-	{
-		password[i] = getchar();
-		if(password[i] == 13 )
-		{
-			break;
-		}
-		else if(password[i]==8 && i>0)
-		{
-			printf("%c%c%c",8,32,8);
-			i--;
-		}
-		else
-		{
-			printf("*");
-			i++;
-		}
-	}while(password[i]!=13);
-	password[i] = '\0';
+    do
+    {
+        password[i] = getch();
+        if(password[i] == 13 )
+        {
+            break;
+        }
+        else if(password[i]==8 && i>0)
+        {
+            printf("%c%c%c",8,32,8);
+            i--;
+        }
+        else
+        {
+            printf("*");
+            i++;
+        }
+    }while(password[i]!=13);
+    password[i] = '\0';
 if(((strcasecmp(username,"admin"))==0)&&((strcasecmp(password,"pass")==0)))
 {
     while(1)
@@ -100,7 +101,7 @@ if(((strcasecmp(username,"admin"))==0)&&((strcasecmp(password,"pass")==0)))
                 break;
         default: printf("\n\t\tYou Pressed wrong key");
                   printf("\n\t\tProgram terminated");
-                  getchar();
+                  getch();
                   exit(0);
 
     }
@@ -139,32 +140,40 @@ printf("\n\t\t\tAdd Employee");
 char another='y';
 Employee e;
 fseek(fp,0,SEEK_END);
-while(another=='y')
+while(another=='y'||another=='Y')
 {
     printf("\n\n\t\tEnter ID number: ");
     scanf("%d",&e.id);
     printf("\n\n\t\tEnter Full Name of Employee: ");
+    fflush(stdin);
     fgets(e.name,100,stdin); //fgets takes an extra \n character as input
     e.name[strlen(e.name)-1]='\0';
     printf("\n\n\t\tEnter Designation: ");
+    fflush(stdin);
     fgets(e.desgn,10,stdin); //fgets takes an extra \n character as input
     e.desgn[strlen(e.desgn)-1]='\0';
     printf("\n\n\t\tEnter Gender: ");
+    fflush(stdin);
     fgets(e.gender,10,stdin); //fgets takes an extra \n character as input
     e.gender[strlen(e.gender)-1]='\0';
     printf("\n\n\t\tEnter Branch: ");
+    fflush(stdin);
     fgets(e.branch,50,stdin);
     e.branch[strlen(e.branch)-1]='\0';
     printf("\n\n\t\tEnter Salary: ");
     scanf("%f",&e.sal);
     printf("\n\n\t\tEnter Phone Number: ");
+    fflush(stdin);
     fgets(e.phone,50,stdin);
     e.phone[strlen(e.phone)-1]='\0';
     printf("\n\n\t\tEnter E-mail Id: ");
+    fflush(stdin);
     fgets(e.mail,20,stdin);
     e.mail[strlen(e.mail)-1]='\0';
     fwrite(&e,sizeof(e),1,fp);
     printf("\n\n\t\tWant to enter another employee info (Y/N)\t");
+    fflush(stdin);
+    another=getchar();
 }
 }
 //DELETING A RECORD FROM LIST
@@ -224,7 +233,7 @@ rewind(fp);
 while((fread(&e,siz,1,fp))==1)
 {
     if(e.id==tempid)
-        {flag=1;
+        {
         break;
         }
 }
@@ -288,7 +297,7 @@ printf("\n\t\t\tList  of Employees");
 void searchRecord(FILE *fp)
 {printHead();
 printf("\n\t\t\tSearch Employee");
-int tempid,siz,i;
+int tempid,flag,siz,i;
 Employee e;
 char another='y';
 siz=sizeof(e);
@@ -304,7 +313,7 @@ while((fread(&e,siz,1,fp))==1)
         break;
         }
 }
-int flag;
+int flag=1;
 if(flag==1)
     {
     printf("\n\t\tNAME : %s",e.name);
@@ -318,6 +327,7 @@ if(flag==1)
 }
 else printf("\n\n\t\t*** ERROR RECORD NOT FOUND ***");
 printf("\n\n\t\tWant to enter another search (Y/N)");
+fflush(stdin);
 }
 }
 //DISPLAY BASIC INFO LIST
