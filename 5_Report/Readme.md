@@ -3,7 +3,7 @@
 ## Requirements
 A Employee’s RECORD System (ERS) is a software built to handle the primary housekeeping functions of a company. EMS help companies keep track of all the employees and their records. It is used to manage the company using computerized system. This project is to build employee record system where we can add, delete, modify, search etc.,details of an employee.
 
-## Identifying features:
+## Identifying features
 -   Add Employee.
 -   Delete Employee.
 -   Modify Employee.
@@ -62,7 +62,7 @@ By entering the details you want to know.
 |HLR_4|Display Employ|Implemented|
 |HLR_5|Search Employ|Implemented|
 
-## Low Level Requirements:
+## Low Level Requirements
 |ID|Description|Status|
 |:--------:|:---------:|:----------:|
 |LLR_1|List of Operations Displayed|Implemented|
